@@ -1,0 +1,233 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Travelia design system — curated luxury travel.
+ * Ink-navy canvas, warm sand text, brushed-gold accent.
+ * All colors in oklch, all tokens semantic.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans: "Jost", system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-sand: var(--sand);
+  --color-ink: var(--ink);
+}
+
+/* Light theme — warm ivory paper, ink navy text, deeper gold for contrast */
+:root {
+  --radius: 0.25rem;
+  --ink: oklch(0.19 0.021 250);
+  --background: oklch(0.975 0.008 85);
+  --foreground: oklch(0.21 0.021 250);
+  --card: oklch(1 0.003 85);
+  --card-foreground: oklch(0.21 0.021 250);
+  --popover: oklch(1 0.003 85);
+  --popover-foreground: oklch(0.21 0.021 250);
+  --primary: oklch(0.6 0.11 75);
+  --primary-foreground: oklch(0.99 0.005 85);
+  --secondary: oklch(0.94 0.012 85);
+  --secondary-foreground: oklch(0.21 0.021 250);
+  --muted: oklch(0.94 0.012 85);
+  --muted-foreground: oklch(0.46 0.018 250);
+  --accent: oklch(0.93 0.02 85);
+  --accent-foreground: oklch(0.55 0.11 75);
+  --destructive: oklch(0.55 0.2 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.88 0.012 85);
+  --input: oklch(0.88 0.012 85);
+  --ring: oklch(0.6 0.11 75);
+  --gold: oklch(0.58 0.11 75);
+  --sand: oklch(0.93 0.02 85);
+  --overlay-tint: oklch(0.19 0.021 250);
+  --shadow-lift: 0 24px 60px -24px oklch(0.5 0.03 250 / 0.28);
+}
+
+/* Dark theme — ink navy canvas, brushed gold */
+.dark {
+  --ink: oklch(0.19 0.021 250);
+  --background: oklch(0.19 0.021 250);
+  --foreground: oklch(0.95 0.008 85);
+  --card: oklch(0.235 0.021 250);
+  --card-foreground: oklch(0.95 0.008 85);
+  --popover: oklch(0.235 0.021 250);
+  --popover-foreground: oklch(0.95 0.008 85);
+  --primary: oklch(0.82 0.1 85);
+  --primary-foreground: oklch(0.19 0.021 250);
+  --secondary: oklch(0.28 0.02 250);
+  --secondary-foreground: oklch(0.95 0.008 85);
+  --muted: oklch(0.27 0.018 250);
+  --muted-foreground: oklch(0.72 0.014 85);
+  --accent: oklch(0.3 0.024 250);
+  --accent-foreground: oklch(0.82 0.1 85);
+  --destructive: oklch(0.6 0.2 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.34 0.018 250);
+  --input: oklch(0.34 0.018 250);
+  --ring: oklch(0.82 0.1 85);
+  --gold: oklch(0.82 0.1 85);
+  --sand: oklch(0.93 0.02 85);
+  --overlay-tint: oklch(0.15 0.02 250);
+  --shadow-lift: 0 24px 60px -24px oklch(0.1 0.02 250 / 0.75);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 500;
+  }
+}
+
+@utility eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+
+  &::before,
+  &::after {
+    content: "";
+    width: 2.25rem;
+    height: 1px;
+    background: color-mix(in oklch, var(--gold) 60%, transparent);
+  }
+}
+
+@utility btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--gold);
+  color: var(--primary-foreground);
+  padding: 0.85rem 1.9rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: color-mix(in oklch, var(--gold) 85%, white);
+    transform: translateY(-2px);
+  }
+}
+
+@utility btn-outline-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid color-mix(in oklch, var(--gold) 55%, transparent);
+  color: var(--gold);
+  padding: 0.85rem 1.9rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: color-mix(in oklch, var(--gold) 12%, transparent);
+  }
+}
+
+@utility surface-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lift);
+    border-color: color-mix(in oklch, var(--gold) 45%, transparent);
+  }
+}
+
+@utility hero-veil {
+  background: linear-gradient(
+    to bottom,
+    oklch(0.15 0.02 250 / 0.72),
+    oklch(0.15 0.02 250 / 0.35) 45%,
+    oklch(0.15 0.02 250 / 0.9)
+  );
+}
+
+@utility field-shell {
+  background: oklch(0.19 0.021 250 / 0.72);
+  border: 1px solid color-mix(in oklch, var(--gold) 25%, transparent);
+  border-radius: 999px;
+  padding: 0.7rem 1.25rem;
+  backdrop-filter: blur(12px);
+}
+
+@utility theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in oklch, var(--gold) 40%, transparent);
+  color: var(--gold);
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+
+  &:hover {
+    background: color-mix(in oklch, var(--gold) 14%, transparent);
+    transform: translateY(-1px);
+  }
+}
